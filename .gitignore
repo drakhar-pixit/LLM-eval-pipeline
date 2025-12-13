@@ -9,31 +9,24 @@ venv/
 ENV/
 .venv
 
+# Docker
+*.log
+
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
-
-# Docker
-*.log
-
-# Environment
-.env
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Temporary files
-/tmp/
-*.tmp
-request.json
+# Results
+result*.json
 
-# Model cache
-.cache/
-models/
+# Minikube
+minikube.exe
 
-# PDF (assignment file)
-*.pdf
+# Node modules (if any)
+node_modules/

@@ -8,6 +8,7 @@ async def call_judge_llm(
     user_query: str,
     ai_response: str,
     context_vectors: List[str],
+    vector_ids: List[int] = None,
 ) -> Dict:
     """
     Call Ollama Judge LLM for detailed evaluation
@@ -15,12 +16,13 @@ async def call_judge_llm(
     
     # Merge all context vectors into single paragraph
     context_str = " ".join(context_vectors)
+    vector_ids_str = str(vector_ids) if vector_ids else "[unknown]"
     
-    # Build prompt with clear structure
+    # Build prompt with clear structure and vector IDs for debugging
     prompt = f"""USER QUERY:
 {user_query}
 
-CONTEXT:
+CONTEXT (Vector IDs: {vector_ids_str}):
 {context_str}
 
 AI RESPONSE:
@@ -29,7 +31,7 @@ AI RESPONSE:
 QUESTION: Is there any information stated in the AI response that is NOT present in the context above? If yes, mark it as a hallucination.
 
 Return JSON:
-{{"hallucination": true/false, "hallucinated_claims": ["specific information not in context"], "relevance_score": 0.0-1.0, "completeness_score": 0.0-1.0, "missing_info": []}}
+{{"hallucination": true/false, "hallucinated_claims": ["specific information not in context"], "relevance_score": 0.0-1.0, "completeness_score": 0.0-1.0, "missing_info": [], "context_vector_ids_used": {vector_ids_str}}}
 """
 
     try:

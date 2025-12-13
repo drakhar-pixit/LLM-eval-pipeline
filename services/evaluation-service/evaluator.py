@@ -18,7 +18,8 @@ class Evaluator:
         context_vectors: List[str],
         context_vector_data: List[Dict],
         timestamp_user: str,
-        timestamp_ai: str
+        timestamp_ai: str,
+        vector_ids: List[int] = None
     ) -> Dict:
         """Evaluate a single conversation turn"""
         
@@ -27,11 +28,12 @@ class Evaluator:
         print(f"{'='*60}")
         
         # Call LLM Judge directly (no pre-filtering)
-        print("Calling Judge LLM...")
+        print(f"Calling Judge LLM with vector IDs: {vector_ids}...")
         llm_judgment = await call_judge_llm(
             user_query=user_query,
             ai_response=ai_response,
-            context_vectors=context_vectors
+            context_vectors=context_vectors,
+            vector_ids=vector_ids
         )
         print(f"  LLM Judgment received")
         
@@ -46,6 +48,10 @@ class Evaluator:
         print(f"  Latency: {metrics_result['latency_ms']}ms")
         print(f"  Cost: ${metrics_result['cost_usd']}")
         print(f"  Tokens: {metrics_result['tokens_used']}")
+        
+        # Ensure required fields are present
+        if "hallucinated_claims" not in llm_judgment:
+            llm_judgment["hallucinated_claims"] = []
         
         # Combine results
         hallucinated_claims = llm_judgment.get("hallucinated_claims", [])

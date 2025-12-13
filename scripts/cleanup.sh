@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🧹 Cleaning up LLM Evaluation Pipeline..."
+echo "Cleaning up LLM Evaluation Pipeline..."
 
 # Stop and remove containers
 docker-compose down
@@ -12,7 +12,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     docker-compose down -v
     echo "Volumes removed"
 else
-    echo "ℹVolumes preserved (models will persist)"
+    echo "Volumes preserved (models will persist)"
 fi
 
 # Optional: Remove images
@@ -23,4 +23,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Images removed"
 fi
 
-echo " Cleanup complete!"
+echo "Cleanup complete!"

@@ -2,20 +2,23 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from models import EvaluationRequest, EvaluationResult, ConversationInput, ContextVectorsInput
 from evaluator import Evaluator
+from vector_client import VectorClient
 from typing import Dict, List
 import json
 import re
 
 app = FastAPI(title="LLM Evaluation Service", version="1.0.0")
 
-# Initialize evaluator at startup
+# Initialize evaluator and vector client at startup
 evaluator = None
+vector_client = None
 
 @app.on_event("startup")
 async def startup_event():
-    global evaluator
+    global evaluator, vector_client
     print("Starting Evaluation Service...")
     evaluator = Evaluator()
+    vector_client = VectorClient()
     print("Evaluation Service ready!")
 
 
@@ -42,9 +45,9 @@ def clean_json_string(text: str) -> str:
     text = ''.join(c if ord(c) >= 32 or c in '\n\t\r' else ' ' for c in text)
     return text
 
-@app.post("/api/evaluate-raw")
-async def evaluate_raw(request: Request):
-    """Endpoint that accepts and cleans malformed JSON"""
+@app.post("/api/evaluate", response_model=EvaluationResult)
+async def evaluate(request: Request):
+    """Main evaluation endpoint - accepts conversation and context vectors"""
     body = await request.body()
     try:
         data = json.loads(body)
@@ -53,10 +56,9 @@ async def evaluate_raw(request: Request):
         data = json.loads(cleaned)
     
     eval_request = EvaluationRequest(**data)
-    return await evaluate(eval_request)
+    return await process_evaluation(eval_request.conversation, eval_request.context_vectors)
 
-@app.post("/api/evaluate", response_model=EvaluationResult)
-async def evaluate(conversation: ConversationInput, context_vectors: ContextVectorsInput):
+async def process_evaluation(conversation: ConversationInput, context_vectors: ContextVectorsInput):
     """
     Main evaluation endpoint
     Accepts conversation and context vectors as separate payloads
@@ -71,20 +73,18 @@ async def evaluate(conversation: ConversationInput, context_vectors: ContextVect
     print(f"Total Turns: {len(request.conversation.conversation_turns)}")
     
     try:
-        # Extract context - use only vectors_used
-        vector_data = request.context_vectors.data.get("vector_data", [])
+        # Extract ONLY vectors_used IDs for evaluation
         vectors_used_ids = request.context_vectors.data.get("sources", {}).get("vectors_used", [])
         
         if vectors_used_ids:
-            # Filter to only the vectors actually used by RAG
+            # Get only the vectors that were actually used by RAG
+            vector_data = request.context_vectors.data.get("vector_data", [])
             vector_id_map = {vec.get("id"): vec for vec in vector_data}
             used_vectors = [vector_id_map[vid] for vid in vectors_used_ids if vid in vector_id_map]
-            context_texts = [vec.get("text", "") for vec in used_vectors if vec.get("text")]
-            print(f"Context: Using {len(context_texts)} vectors from vectors_used (filtered from {len(vector_data)} total)")
+            print(f"Found {len(used_vectors)} vectors from vectors_used {vectors_used_ids}")
         else:
-            # Fallback to all vectors
-            context_texts = [vec.get("text", "") for vec in vector_data if vec.get("text")]
-            print(f"Context Vectors: {len(context_texts)} (all vectors)")
+            used_vectors = []
+            print(f"Warning: No vectors_used specified, using empty context")
         
         # Extract AI responses from conversation
         ai_turns = [
@@ -94,11 +94,8 @@ async def evaluate(conversation: ConversationInput, context_vectors: ContextVect
         
         print(f"AI Responses to Evaluate: {len(ai_turns)}")
         
-        # Evaluate each AI response in batches
-        import asyncio
-        
-        # Prepare all evaluation tasks
-        tasks = []
+        # Evaluate each AI response sequentially
+        evaluations = []
         for ai_turn in ai_turns:
             # Find corresponding user query (previous turn)
             user_turn = None
@@ -111,26 +108,34 @@ async def evaluate(conversation: ConversationInput, context_vectors: ContextVect
                 print(f"Warning: No user query found for turn {ai_turn.turn}")
                 continue
             
-            # Create task
-            task = evaluator.evaluate_turn(
+            print(f"Processing turn {ai_turn.turn} sequentially...")
+            
+            # Select most relevant vector using cosine similarity
+            if used_vectors:
+                most_relevant_vector = await vector_client.select_most_relevant_vector(
+                    user_turn.message, used_vectors
+                )
+                context_texts = [most_relevant_vector.get("text", "")] if most_relevant_vector else []
+                selected_vector_ids = [most_relevant_vector.get("id")] if most_relevant_vector else []
+                selected_vectors = [most_relevant_vector] if most_relevant_vector else []
+                print(f"Selected most relevant vector: ID {selected_vector_ids[0] if selected_vector_ids else 'None'}")
+            else:
+                context_texts = []
+                selected_vector_ids = []
+                selected_vectors = []
+            
+            # Process one at a time
+            evaluation = await evaluator.evaluate_turn(
                 turn_number=ai_turn.turn,
                 user_query=user_turn.message,
                 ai_response=ai_turn.message,
                 context_vectors=context_texts,
-                context_vector_data=vector_data,
+                context_vector_data=selected_vectors,
                 timestamp_user=user_turn.created_at,
-                timestamp_ai=ai_turn.created_at
+                timestamp_ai=ai_turn.created_at,
+                vector_ids=selected_vector_ids
             )
-            tasks.append(task)
-        
-        # Process in batches of 10
-        BATCH_SIZE = 10
-        evaluations = []
-        for i in range(0, len(tasks), BATCH_SIZE):
-            batch = tasks[i:i + BATCH_SIZE]
-            print(f"Processing batch {i//BATCH_SIZE + 1} ({len(batch)} turns)...")
-            batch_results = await asyncio.gather(*batch)
-            evaluations.extend(batch_results)
+            evaluations.append(evaluation)
         
         # Calculate overall score
         overall_score = evaluator.calculate_overall_score(evaluations)

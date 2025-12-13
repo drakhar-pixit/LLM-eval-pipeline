@@ -2,7 +2,7 @@
 
 set -e
 
-echo " Setting up Ollama with Phi-3 Mini model..."
+echo "Setting up Ollama with Phi-3 Mini model..."
 
 # Wait for Ollama to be ready
 echo "Waiting for Ollama service to start..."
@@ -18,4 +18,4 @@ echo "Model info:"
 docker exec judge-llm ollama list
 
 echo ""
-echo " Setup complete! You can now use the evaluation service."
+echo "Setup complete! You can now use the evaluation service."

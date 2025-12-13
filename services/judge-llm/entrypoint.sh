@@ -1,14 +1,14 @@
 #!/bin/bash
 set -e
 
+echo "Starting Ollama server..."
 ollama serve &
 OLLAMA_PID=$!
 
-sleep 5
+echo "Waiting for Ollama to start..."
+sleep 10
 
-if ! ollama list | grep -q "phi3:mini"; then
-    echo "Downloading phi3:mini model..."
-    ollama pull phi3:mini
-fi
+echo "Ollama server started with PID: $OLLAMA_PID"
+echo "Ready to serve requests on port 11434"
 
 wait $OLLAMA_PID

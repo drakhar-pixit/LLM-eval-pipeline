@@ -30,7 +30,7 @@ curl -X POST http://localhost:8000/api/evaluate \
   | jq '.'
 
 echo ""
-echo " Test complete!"
+echo "Test complete!"
 echo ""
 echo "View detailed logs:"
 echo "  docker logs -f evaluation-service"

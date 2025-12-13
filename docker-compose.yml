@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  judge-llm:
+    build: ./services/judge-llm
+    container_name: judge-llm
+    platform: linux/amd64
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+
+    networks:
+      - llm-eval-network
+
+  evaluation-service:
+    build: ./services/evaluation-service
+    container_name: evaluation-service
+    platform: linux/amd64
+    ports:
+      - "8000:8000"
+    environment:
+      - JUDGE_LLM_URL=http://judge-llm:11434
+      - CROSS_ENCODER_MODEL=cross-encoder/nli-deberta-v3-small
+      - ENTAILMENT_THRESHOLD=0.7
+      - CONTRADICTION_THRESHOLD=0.3
+      - OLLAMA_MODEL=qwen2.5:7b
+      - OLLAMA_TIMEOUT=7200
+    depends_on:
+      - judge-llm
+
+    networks:
+      - llm-eval-network
+
+volumes:
+  ollama-models:
+    driver: local
+
+networks:
+  llm-eval-network:
+    driver: bridge

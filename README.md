@@ -102,7 +102,7 @@ docker-compose up --build -d
 
 ### Test Payload 1: Hallucination Detection (Subsidized Rooms)
 ```bash
-curl -X POST http://localhost:8000/evaluate \
+curl -X POST http://localhost:8000/api/evaluate \
   -H "Content-Type: application/json" \
   -d @data/test_payload.json
 ```

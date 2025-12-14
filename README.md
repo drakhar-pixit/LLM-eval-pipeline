@@ -104,6 +104,45 @@ docker-compose up --build -d
 
 ---
 
+## 📝 Important Notes
+
+### **⚠️ Input JSON Modifications**
+**We have merged the two separate input JSON files into a single unified format and corrected syntax errors in the original JSON structure.** The original files contained:
+- Invalid JSON syntax (missing commas, incorrect nesting)
+- Separate conversation and vector files requiring manual merging
+- Inconsistent timestamp formats
+
+Our unified format (`data/test_payload.json`, `data/test_payload_2.json`, `data/test_payload_3.json`) provides:
+- Valid JSON structure
+- Single file containing both conversation turns and context vectors
+- Consistent schema for easy testing
+
+### Hallucination Detection Philosophy
+- **Questions are NOT hallucinations**: "Do you have questions about legal contracts?" is a question, not a factual claim
+- **Only factual claims are evaluated**: Statements like "We offer subsidized rooms" are checked against context
+- **Severity weighting**: Medical/safety hallucinations penalized more than logistics errors
+
+### Model Selection
+- **Qwen 2.5 7B** chosen for balance of accuracy and speed
+- Alternatives tested: Llama 3 8B (slower), Mistral 7B (less accurate on hallucinations)
+- Temperature tuning: 0.1 provides best consistency without sacrificing quality
+
+### Known Limitations
+- First run downloads 4-5GB model (one-time)
+- CPU inference is slow (~10s per turn); GPU recommended for production
+- Evaluation is sequential per conversation (parallelizable across conversations)
+
+### Future Work
+This pipeline handles core evaluation metrics including hallucination detection, relevance, and completeness scoring. Future improvements include:
+- Domain-aware scoring with customizable evaluation criteria per industry
+- Human-in-the-loop calibration for fine-tuning judgment thresholds
+- Multi-language support for non-English conversations
+- Real-time streaming evaluation for live chat systems
+- Advanced caching strategies with Redis for vector embeddings
+- Integration with observability platforms (Prometheus, Grafana) for production monitoring
+
+---
+
 ## 🧪 Testing the Pipeline
 
 **Note:** All test payloads are located in the `data/` folder.
@@ -432,45 +471,6 @@ With MaxSim:
 - LLM tokens: 10M turns × 1 vector × 500 tokens = 5B tokens/day
 - Cost: ~$1000/day (66% reduction)
 ```
-
----
-
-## 📝 Important Notes
-
-### **⚠️ Input JSON Modifications**
-**We have merged the two separate input JSON files into a single unified format and corrected syntax errors in the original JSON structure.** The original files contained:
-- Invalid JSON syntax (missing commas, incorrect nesting)
-- Separate conversation and vector files requiring manual merging
-- Inconsistent timestamp formats
-
-Our unified format (`data/test_payload.json`, `data/test_payload_2.json`, `data/test_payload_3.json`) provides:
-- Valid JSON structure
-- Single file containing both conversation turns and context vectors
-- Consistent schema for easy testing
-
-### Hallucination Detection Philosophy
-- **Questions are NOT hallucinations**: "Do you have questions about legal contracts?" is a question, not a factual claim
-- **Only factual claims are evaluated**: Statements like "We offer subsidized rooms" are checked against context
-- **Severity weighting**: Medical/safety hallucinations penalized more than logistics errors
-
-### Model Selection
-- **Qwen 2.5 7B** chosen for balance of accuracy and speed
-- Alternatives tested: Llama 3 8B (slower), Mistral 7B (less accurate on hallucinations)
-- Temperature tuning: 0.1 provides best consistency without sacrificing quality
-
-### Known Limitations
-- First run downloads 4-5GB model (one-time)
-- CPU inference is slow (~10s per turn); GPU recommended for production
-- Evaluation is sequential per conversation (parallelizable across conversations)
-
-### Future Work
-This pipeline handles core evaluation metrics including hallucination detection, relevance, and completeness scoring. Future improvements include:
-- Domain-aware scoring with customizable evaluation criteria per industry
-- Human-in-the-loop calibration for fine-tuning judgment thresholds
-- Multi-language support for non-English conversations
-- Real-time streaming evaluation for live chat systems
-- Advanced caching strategies with Redis for vector embeddings
-- Integration with observability platforms (Prometheus, Grafana) for production monitoring
 
 ---
 

@@ -1,11 +1,9 @@
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, HTTPException
 from models import EvaluationRequest, EvaluationResult, ConversationInput, ContextVectorsInput
 from evaluator import Evaluator
 from vector_client import VectorClient
-from typing import Dict, List
-import json
-import re
+import httpx
+import os
 
 app = FastAPI(title="LLM Evaluation Service", version="1.0.0")
 
@@ -37,26 +35,10 @@ async def ready():
     return {"status": "ready"}
 
 
-def clean_json_string(text: str) -> str:
-    """Remove comments and trailing commas from JSON string"""
-    text = re.sub(r'//[^\n]*', '', text)
-    text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
-    text = re.sub(r',\s*([}\]])', r'\1', text)
-    text = ''.join(c if ord(c) >= 32 or c in '\n\t\r' else ' ' for c in text)
-    return text
-
 @app.post("/api/evaluate", response_model=EvaluationResult)
-async def evaluate(request: Request):
+async def evaluate(request: EvaluationRequest):
     """Main evaluation endpoint - accepts conversation and context vectors"""
-    body = await request.body()
-    try:
-        data = json.loads(body)
-    except json.JSONDecodeError:
-        cleaned = clean_json_string(body.decode('utf-8'))
-        data = json.loads(cleaned)
-    
-    eval_request = EvaluationRequest(**data)
-    return await process_evaluation(eval_request.conversation, eval_request.context_vectors)
+    return await process_evaluation(request.conversation, request.context_vectors)
 
 async def process_evaluation(conversation: ConversationInput, context_vectors: ContextVectorsInput):
     """
@@ -110,7 +92,7 @@ async def process_evaluation(conversation: ConversationInput, context_vectors: C
             
             print(f"Processing turn {ai_turn.turn} sequentially...")
             
-            # Select most relevant vector using cosine similarity
+            # Select most relevant vector using MaxSim
             if used_vectors:
                 most_relevant_vector = await vector_client.select_most_relevant_vector(
                     user_turn.message, used_vectors
@@ -131,6 +113,7 @@ async def process_evaluation(conversation: ConversationInput, context_vectors: C
                 ai_response=ai_turn.message,
                 context_vectors=context_texts,
                 context_vector_data=selected_vectors,
+                all_vectors_for_cost=used_vectors,
                 timestamp_user=user_turn.created_at,
                 timestamp_ai=ai_turn.created_at,
                 vector_ids=selected_vector_ids
@@ -175,6 +158,7 @@ async def process_evaluation(conversation: ConversationInput, context_vectors: C
                 entailment_check=HallucinationCheck(**e["entailment_check"]),
                 llm_judgment=LLMJudgment(**e["llm_judgment"]),
                 metrics=Metrics(**e["metrics"]),
+                scores=e.get("scores"),
                 used_llm=e["used_llm"]
             )
             eval_objects.append(eval_obj)
@@ -192,6 +176,15 @@ async def process_evaluation(conversation: ConversationInput, context_vectors: C
         
         # Print formatted results
         print_results(result)
+        
+        # Send to frontend
+        frontend_url = os.getenv('FRONTEND_URL')
+        if frontend_url:
+            try:
+                async with httpx.AsyncClient() as client:
+                    await client.post(f"{frontend_url}/api/results", json=result.dict())
+            except:
+                pass
         
         return result
         

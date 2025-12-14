@@ -33,6 +33,17 @@ QUESTION: Is there any information stated in the AI response that is NOT present
 Return JSON:
 {{"hallucination": true/false, "hallucinated_claims": ["specific information not in context"], "relevance_score": 0.0-1.0, "completeness_score": 0.0-1.0, "missing_info": [], "context_vector_ids_used": {vector_ids_str}}}
 """
+    
+    # Debug logging
+    if "legal" in ai_response.lower() or "subsidized" in ai_response.lower():
+        print(f"\n{'='*80}")
+        print(f"DEBUG: AI response contains 'legal' or 'subsidized'")
+        print(f"Vector IDs: {vector_ids_str}")
+        print(f"Context length: {len(context_str)} chars")
+        print(f"Context contains 'legal': {'legal' in context_str.lower()}")
+        print(f"Context contains 'contract': {'contract' in context_str.lower()}")
+        print(f"Context contains 'subsidized': {'subsidized' in context_str.lower()}")
+        print(f"{'='*80}\n")
 
     try:
         timeout = httpx.Timeout(7200.0, connect=10.0)
@@ -65,23 +76,27 @@ Return JSON:
             try:
                 judgment = json.loads(llm_output)
                 
+                # Ensure required fields exist
+                if "hallucinated_claims" not in judgment:
+                    judgment["hallucinated_claims"] = []
+                if "missing_info" not in judgment:
+                    judgment["missing_info"] = []
+                
                 # Normalize hallucinated_claims to list of strings
-                if "hallucinated_claims" in judgment:
-                    claims = judgment["hallucinated_claims"]
-                    if isinstance(claims, list):
-                        judgment["hallucinated_claims"] = [
-                            str(c) if not isinstance(c, str) else c 
-                            for c in claims
-                        ]
+                claims = judgment["hallucinated_claims"]
+                if isinstance(claims, list):
+                    judgment["hallucinated_claims"] = [
+                        str(c) if not isinstance(c, str) else c 
+                        for c in claims
+                    ]
                 
                 # Normalize missing_info to list of strings
-                if "missing_info" in judgment:
-                    info = judgment["missing_info"]
-                    if isinstance(info, list):
-                        judgment["missing_info"] = [
-                            str(i) if not isinstance(i, str) else i 
-                            for i in info
-                        ]
+                info = judgment["missing_info"]
+                if isinstance(info, list):
+                    judgment["missing_info"] = [
+                        str(i) if not isinstance(i, str) else i 
+                        for i in info
+                    ]
                         
             except json.JSONDecodeError:
                 # Fallback if LLM doesn't return valid JSON
@@ -94,6 +109,13 @@ Return JSON:
                 }
             
             judgment["method"] = "llm_judge"
+            
+            # Debug logging for legal contracts and subsidized rooms
+            if "legal" in ai_response.lower() or "subsidized" in ai_response.lower():
+                print(f"\nDEBUG LLM Response:")
+                print(f"  Hallucination detected: {judgment.get('hallucination')}")
+                print(f"  Claims: {judgment.get('hallucinated_claims')}\n")
+            
             return judgment
             
     except Exception as e:

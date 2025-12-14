@@ -18,6 +18,13 @@ class VectorSelectionResponse(BaseModel):
     selected_vector: Dict[str, Any]
     similarity_score: float
 
+class SimilarityRequest(BaseModel):
+    text1: str
+    text2: str
+
+class SimilarityResponse(BaseModel):
+    similarity: float
+
 @app.on_event("startup")
 async def startup_event():
     global encoder
@@ -28,6 +35,14 @@ async def startup_event():
 @app.get("/health")
 async def health():
     return {"status": "healthy"}
+
+@app.post("/similarity", response_model=SimilarityResponse)
+async def calculate_similarity(request: SimilarityRequest):
+    """Calculate cosine similarity between two texts"""
+    emb1 = encoder.encode([request.text1])
+    emb2 = encoder.encode([request.text2])
+    similarity = float(cosine_similarity(emb1, emb2)[0][0])
+    return SimilarityResponse(similarity=similarity)
 
 @app.post("/select-vector", response_model=VectorSelectionResponse)
 async def select_most_relevant_vector(request: VectorSelectionRequest):

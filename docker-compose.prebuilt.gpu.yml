@@ -3,7 +3,7 @@ version: '3.8'
 services:
   judge-llm:
     image: ollama/ollama:latest
-    container_name: judge-llm-gpu
+    container_name: judge-llm
     ports:
       - "11434:11434"
     volumes:
@@ -15,13 +15,18 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              count: all
               capabilities: [gpu]
     networks:
       - llm-eval-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   vector-encoder:
-    build: ./services/vector-encoder
+    image: prakhardixit21/llm-eval-vector-encoder:latest
     container_name: vector-encoder
     platform: linux/amd64
     ports:
@@ -30,7 +35,7 @@ services:
       - llm-eval-network
 
   evaluation-service:
-    build: ./services/evaluation-service
+    image: prakhardixit21/llm-eval-evaluation-service:latest
     container_name: evaluation-service
     platform: linux/amd64
     ports:
@@ -39,7 +44,7 @@ services:
       - JUDGE_LLM_URL=http://judge-llm:11434
       - VECTOR_ENCODER_URL=http://vector-encoder:8001
       - OLLAMA_MODEL=qwen2.5:7b
-      - OLLAMA_TIMEOUT=3600
+      - OLLAMA_TIMEOUT=7200
       - FRONTEND_URL=http://frontend:3000
     depends_on:
       - judge-llm
@@ -48,7 +53,7 @@ services:
       - llm-eval-network
 
   frontend:
-    build: ./frontend
+    image: prakhardixit21/llm-eval-frontend:latest
     container_name: frontend
     ports:
       - "3000:3000"

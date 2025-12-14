@@ -72,6 +72,7 @@ class TurnEvaluation(BaseModel):
     entailment_check: HallucinationCheck
     llm_judgment: LLMJudgment
     metrics: Metrics
+    scores: Optional[Dict[str, float]] = None
     used_llm: bool
 
 

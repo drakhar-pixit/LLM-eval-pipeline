@@ -1,0 +1,243 @@
+{
+  "conversation": {
+    "chat_id": 53911,
+    "user_id": 52599,
+    "conversation_turns": [
+      {
+        "turn": 1,
+        "sender_id": 52599,
+        "role": "User",
+        "message": "I need medical advice",
+        "created_at": "2025-05-21T07:29:43.000000Z"
+      },
+      {
+        "turn": 2,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "That's great, may I know what are you looking to know more about?",
+        "created_at": "2025-05-21T07:29:43.000000Z"
+      },
+      {
+        "turn": 3,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "I know what you're going through. Let's talk. I'm here to support you for all your infertility and IVF needs. Please tell me what's on your mind.",
+        "created_at": "2025-05-22T06:00:25.000000Z"
+      },
+      {
+        "turn": 4,
+        "sender_id": 52599,
+        "role": "User",
+        "message": "My amh 0.68 afc 4 age 34+.doctor advised for donor egg. Should I go with donor egg or self egg",
+        "created_at": "2025-05-22T06:00:25.000000Z"
+      },
+      {
+        "turn": 5,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "I understand that managing fertility concerns can be challenging. With an AMH of 0.68 and an AFC of 4, you're facing a lower ovarian reserve, which can impact IVF success rates when using your own eggs. I'd recommend discussing these options with one of our fertility specialists who can offer personalized advice. You can [book a consultation](https://pages.razorpay.com/ivfconsultation) to explore the best path forward based on your specific situation. How do you feel about the idea of using donor eggs?",
+        "created_at": "2025-05-22T06:00:34.000000Z"
+      },
+      {
+        "turn": 6,
+        "sender_id": 52599,
+        "role": "User",
+        "message": "I have also intramural adenomyoma 2.3 cm. Doctor said it should not affect the implantation.",
+        "created_at": "2025-05-22T06:00:34.000000Z"
+      },
+      {
+        "turn": 7,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "That's correct, a small intramural adenomyoma (2.3 cm) that is not affecting the uterine cavity is generally not considered to affect implantation or fertility. You can focus on addressing the low ovarian reserve (AMH 0.68, AFC 4).",
+        "created_at": "2025-05-22T06:03:00.000000Z"
+      },
+      {
+        "turn": 8,
+        "sender_id": 52599,
+        "role": "User",
+        "message": "My main concern is to get pregnant. I want to know is going on donor egg is right choice",
+        "created_at": "2025-05-22T06:03:17.000000Z"
+      },
+      {
+        "turn": 9,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "I understand you're looking for a definitive answer on whether donor eggs are the right choice. It's a very personal decision, and what's \"right\" depends on your individual priorities and circumstances. While using your own eggs might be emotionally preferable, with a low AMH (0.68) and AFC (4), the chances of success with donor eggs are significantly higher. Younger, screened donor eggs increase the quality of the embryos, which is a major factor in IVF success. Many patients who prioritize having a baby quickly and minimizing emotional distress often choose donor eggs. The joy of carrying and raising a child often outweighs the genetic link for many. Your doctor's advice is based on maximizing your chances of a successful pregnancy. The experience of pregnancy and raising the child is more important than genetics. Would you like to learn more about our egg donation program and how we carefully screen our donors?",
+        "created_at": "2025-05-22T06:06:40.000000Z"
+      },
+      {
+        "turn": 14,
+        "sender_id": 52599,
+        "role": "User",
+        "message": "I am open to donor option. I am happy that I will get a my baby. Just want to know will my donor egg baby have some other later in life.",
+        "created_at": "2025-05-22T06:08:40.000000Z"
+      },
+      {
+        "turn": 15,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "I understand your concern about the long-term health of a baby conceived through donor eggs. It's natural to wonder about potential risks. Please be assured that egg donors undergo thorough screening for genetic and infectious diseases to minimize these risks. We do genetic screening, along with taking a detailed family history of the donor to determine the presence of any diseases that may be transmitted to the unborn child. This helps ensure the health of the eggs used in the IVF cycle. Also, we only use frozen eggs in our clinic to prevent the inadvertent transmission of HIV/AIDS through IVF. Do you have any questions about the legal contracts involved in donor egg IVF?",
+        "created_at": "2025-05-22T06:08:47.000000Z"
+      }
+    ]
+  },
+  "context_vectors": {
+    "status": "success",
+    "status_code": 200,
+    "message": "Message sent successfully!",
+    "data": {
+        "vector_data": [
+            {
+                "id": 38511,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/donor-egg-ivf",
+                "text": "Donor Egg IVF IVF is a boon for infertile couples who are longing to have a baby. In most instances, it becomes the last resort for these couples, but one that has a significantly high success rate. When a couple comes to us for treatment, and after the first tests and workup has been done, we are able to identify whether the woman and the man have healthy eggs and sperm respectively, in order to be able to conceive via IVF.In case it is found that the quality of the woman\u2019s egg is poor or if the woman doesn\u2019t have any eggs at all, it\u2019s possible for the couple to use donor eggs in their IVF treatment. Other third party reproduction options such as donor sperm, donor embryo and surrogacy are also now being used by couples who are unable to conceive with their own eggs or sperm.Of course, adoption is another course of action for couples that want to have a baby. However, there are times when a woman wants to experience pregnancy and wants to breast-feed her child and go through the early newborn- bonding process- these things aren\u2019t possible with options such as surrogacy and adoption. Take a look at how the donor egg process works.Donor EggsSome women are unable to conceive using their own eggs for a range of reasons.Age-related ovarian failurePremature ovarian failureSurgery for specific pelvic disordersMedical therapies such as chemotherapyIf after the relevant tests, we have identified that the patient is unable to conceive because of any of these reasons, we may discuss the egg donor option with the patient. The donor eggs that are used in the treatment may be obtained via:An anonymous donorThrough an egg bankKnown donor (friend or sister etc)If the patient opts for eggs from an anonymous donor, it takes some time to identify the right donor; once that is taken care of; we then have to synchronize the donor and the recipient cycles.The Pros and ConsIn the egg bank option, the eggs are ready for use and it makes the process quicker. Both these options have their pros and cons. We prefer using frozen eggs, as there are certain risks associated with using fresh eggs. For example, the donor may not respond to the medications as we expect, and she may not be able to produce the number of high quality eggs that are required. In some instances, the donor may just decide she wants to drop-out mid cycle. Our pregnancy rates with frozen eggs from our egg bank are as good as with fresh eggs, since we vitrify these eggs, which means they all survive intact after thawing. Another major advantage of using donor eggs means we don\u2019t need to bother to synchronise the cycles of the donor and the recipient, since the eggs can be used according to the patient\u2019s cycle.",
+                "tokens": 558,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 36947,
+                "source_type": 3,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/egg-donor-procedure-what-tests-does-the-donor-require",
+                "text": "Egg Donor Procedure \u2013 What Tests Does the Donor Require Using an egg donor for IVF treatments is not unheard of anymore. With the number of women willing to donate their eggs for IVF treatments on the rise and the number of women aged above 40 wanting to have babies rising, clinics are increasingly engaging in egg donor procedure for IVF.Matching the CycleThough some clinics would have you believe that using an egg donor is immensely easier than using your own eggs for an IVF cycle, the truth is that the egg donor procedure for IVF is not all too simple either. In fact, matching the donor's cycle with your own is of critical importance and so it is to ascertain that the donor's eggs are healthy enough to be used. Why is Screening of Eggs Necessary?In any IVF cycle, where the eggs are donated \u2013 by a friend or a relative or by an anonymous donor, a thorough evaluation and screening of each donor is absolutely essential. The screening is performed to ensure that the eggs being used for the IVF treatment would in fact, be useful for the treatment. If the eggs in the donor were of poor quality too, the IVF treatment would fail.The donor should also be made aware of all the egg donor procedure so that she can make an informed choice about the donation. She should be given the option to back out if she has any doubts or concerns. The evaluation and screening of the potential egg donor should ideally serve to protect all the parties \u2013 the recipient, the donor and the offspring resulting from the donation. Read- Is Donor Egg IVF Right For You?",
+                "tokens": 323,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 25284,
+                "source_type": 3,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/ivf-with-donor-eggs-when-and-why-to-approach-a-donor",
+                "text": "IVF with Donor Eggs \u2013 a difficult emotional dilemma The doctor will select a donor for you who matches your physical traits ( height, colour of eyes, hair and blood group, for example). Once the donor's egg are mature, she will have to go through the egg retrieval process. She will be superovulated to harvest many eggs in one cycle. These eggs are frozen, which means they can be thawed, fertilised with your husband's sperm, and the resulting embryos then transferred into your uterus when your uterine lining is receptive. The spare embryos can be frozen and then used in the future as needed.SummaryHaving an IVF with donor eggs is common, especially when the woman is past the age of 40 or she has unusable eggs. With young donors, the eggs are fertile and the chances of success are much higher.",
+                "tokens": 171,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 37460,
+                "source_type": 3,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/egg-donor-procedure-the-tests-the-donor-has-to-do",
+                "text": "Egg Donor Procedure \u2013 The Tests the Donor Has to Do It\u2019s not uncommon anymore for IVF patients to use donor eggs in their treatment. The number of women willing to donate their eggs has increased and there is a proportionate rise in the number of women above 40 years of age, who want to have babies. Today, IVF clinics have experienced a rise in the number of patients opting for egg donor IVF.There are many clinics that will have you believe that using an egg donor is far easier than using your own eggs for an IVF cycle; the fact is that the IVF egg donor procedure isn\u2019t really a cakewalk. Its very important to match the cycle of the donor with the your cycle; and this makes it very important to find out whether the donor\u2019s eggs are healthy enough to be used.Egg screening- Why is it required?In a cycle in which eggs are donated either by a friend\/relative\/anonymous donor, it\u2019s crucial that a thorough evaluation & screening of each donor be auctioned. This screening is conducted to ensure that the eggs which are used in the treatment will actually be useful for the treatment. If the donor eggs are of a poor quality, the IVF treatment wouldn\u2019t be successful.The donor has to be made aware of how the procedure works and this will help her make an informed choice about the donation. In case she has any concerns or doubts, she should have the option to back out. The screening and evaluation procedure is for the benefit of the woman who is having the baby, the egg donor as well as the child that results from the donation.Read- Is Donor Egg IVF Right For You?The Donor Prerequisites The donor should be below 35 years of age- this helps ensure fertile and healthy eggs for the IVF cycleHer ovarian reserves should also be normal and this should be evidenced by lab testingShe has to go through tests to establish there she doesn\u2019t have any genetic or communicable diseases or impaired fertilityHer detailed family history should be taken and genetic screening should be done as well. This helps determine if she has any diseases that could be transmitted to the unborn childBefore the donor is given a clean chit for egg retrieval, its also important to carry out tests for diseases that might exist in the racial or ethnic backgroundOnce the physical testing has been done, its important that a psychological evaluation be done as well. Its important to check whether she knows what she is doing and that the egg donation is being done willingly and not under any kind of duressSomecenters also retrieve many eggs from donors; they then split these eggs between different patients.",
+                "tokens": 533,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 25903,
+                "source_type": 3,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/ivf-with-donor-eggs-when-and-why-to-approach-a-donor",
+                "text": "IVF with Donor Eggs \u2013 a difficult emotional dilemma Human desire is never-ending and just like all our other desires, the desire to become parents may be felt at any time. While fulfilling a lot of other desires may not be impossible, there is a good chance of working this one out. If you are over 40 years of age, your doctor is most likely going to tell you that your chances of becoming a mother with your own eggs are very slim. However, this does not deter some women, who are keen on having their own child even if age is no longer on their side.IVF with Donor Eggs \u2013 Do You Need It?The woman's body is such that her eggs are most fertile when she is under the age of 35. Once she crosses the threshold of 35 years of age, the quality of her eggs begins to decline. By the time she is 40, the quality of these eggs may have declined to a point where they can no longer be used for conception.There are women who are still able to conceive naturally in their 40s, but that is rare. Some women may no longer be able to produce healthy eggs for an IVF treatment and that is when doctors suggest IVF with donor eggs. You can test your ovarian reserve by doing two simple tests. 1. What\u2019s your blood AMH level. Read more at http:\/\/www.drmalpani.com\/knowledge-center\/infertility-testing\/amh 2. Check your antral follicle count by doing a vaginal ultrasound scan. Read more at http:\/\/www.drmalpani.com\/knowledge-center\/articles\/afc Finally, the best test for your ovarian response is an actual IVF cycle - how good is the quality of your eggs and embryos when the doctor does IVF for you ? If your ovarian response is poor, or your embryo quality is poor, you may want to consider using donor eggs in your next cycle. READ MORE- Are you The Appropriate Candidate for Donor Eggs? The Considerations IVF with donor eggs is different from conventional IVF treatments. This is because the egg retrieval step is overridden in this treatment. There are a number of considerations in play here: You have to first decide if you are comfortable withe the idea of using donor eggs. Since the donor is anonymous , this means you need to take a leap of faith that the doctor will select the right donor for you. The good news is that because we use frozen eggs from our egg bank, it's possible for us to closely match physical traits ( height, complexion, colour of eyes, blood group and so on) ! If your partner's sperm is unhealthy or unusable, you can opt for donor embryos instead. In this case, though you would be carrying the child, it would have no genetic ties with either you or your partner Understand What Embryo Donation Is The Process",
+                "tokens": 584,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 38232,
+                "source_url": "https:\/\/www.drmalpani.com\/resource\/book\/chapter25g",
+                "text": "Donor Eggs and Donor Embryos What about using donor sperm, donor eggs and donor embryos in an IVF cycle ?Donor Sperms, Donor Eggs and Donor EmbryosCouples with no sperm or eggs can undergo IVF and GIFT with the use of donor sperm or eggs.For IVF, cryopreserved donor sperm are processed in the same way as fresh sperm. Today, because of the availability of ICSI, the need to use donor sperm when doing IVF is restricted only to men with complete testicular failure.Donor eggs can be used for women who have no eggs ( ovarian failure) but who do have a healthy uterus. An embryo resulting from the fertilization of a donor egg and the husband's sperm is placed inside the patient's uterus.A couple may also choose to use donor eggs if the woman has a genetic disease that could be passed on to a child. Donor eggs can also be used in some cases of long standing infertility when other procedures have failed - for example, women with many previous unsuccessful IVF cycles. The use of egg donation is now becoming increasingly commoner , as older women are seeking infertility treatment. Since the chance of a pregnancy in the older woman depends directly upon the quality of her eggs , many older women opt to use donor eggs from younger women - which increases their pregnancy rates dramatically. This also creates headline news, for example, when a menopausal woman has given birth with donor eggs. In rare cases, when both the man and woman are infertile, donor sperm and donor eggs have been used together.Today, because we can freeze and store eggs routinely using vitrification, we use our egg bank for our donor egg IVF program. This allows us to physically match the egg donor and the wife ; synchronise cycles much better; and also guarantee that we will have at least 10 mature donor eggs for the treatment cycle.Egg donation for IVF requires the egg donor to undergo superovulation and ovum aspiration. The donation of eggs carries more risk and inconvenience to the donor than does the donation of sperm.Fig 1. Ultrasound scan of the egg donor after superovulation. She has grown many follicles and is ready for egg retrievalFor donor egg IVF treatment, the patient ( recipient) needs to be treated with hormones, so that her endometrium is primed and is receptive to the embryos at the time of transfer.Fig 2. Mature oocyte cumulus complexFor amenorrheic women with ovarian failure, this can be achieved by treating them with exogenous estrogens and progesterone. Other women who are cycling need to be downregulated with GnRH analogs before starting treatment with exogenous estrogens. For women who are ovulating, we can do the transfer in a natural cycle as well .",
+                "tokens": 573,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 39650,
+                "source_type": 3,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/is-donor-egg-ivf-the-right-option-for-you",
+                "text": "Is donor egg IVF the right option for you? The attitudes of patients towards having to use donor eggs can vary a lot! Many older women have poor ovarian reserve, and they know that the best way of having a healthy baby is to use donor eggs. However, lots of them find it very difficult to come to terms with this. They believe - It's not going to be my child because my baby is not going to carry my DNA. This is why they point-blank reject this option and refuse to explore it. On the other hand, there are other women who say, \"Look, at the end of the day all I want is a baby. The DNA doesn't really matter, because as long as I love the baby, this will by my child.\" They are very happy to accept this option, and are grateful that not only are there young women who are happy to donate their eggs, they're also pleased that the technology exists today to take advantage of this treatment something which simply wasn't available 40 years ago. The acceptability of using donor eggs depends on the attitude of the patient and what they really want from fertility treatment the propagation of their DNA? the pleasure of experiencing pregnancy? or the joy of bringing up a baby? You can download the IVF comic book free at https:\/\/www.drmalpani.com\/pdf\/IVF_COMIC_BOOK.pdfand this will help you make better decisions!",
+                "tokens": 321,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 33723,
+                "source_type": 3,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/egg-donor-procedure-what-tests-does-the-donor-require",
+                "text": "Egg Donor Procedure \u2013 What Tests Does the Donor Require Donor Prerequisites Ideally, the donor should be younger than 35 years, to ensure healthy and fertile eggs for the IVF cycle She should also have normal ovarian reserves, as evidenced by laboratory testing In addition to this, she should be subjected to tests to establish absence of impaired fertility or any communicable and genetic diseases. A genetic screening, along with a detailed family history should be able to determine the presence of any diseases which may be transmitted to the unborn child Tests for some diseases that may be prevalent in the ethnic and racial background of the mother should also be performed before the donor is given a clean chit for egg retrieval After the physical testing, a psychological evaluation of the woman should also be performed to ensure that she knows what she is doing and that she is donating her eggs willingly, and under no pressure Some centers often retrieve several eggs from the donors and then split them between two or more recipients. This helps decrease both the cost and the waiting period for couples who want to use donor eggs for their IVF treatment. Once it is esatblished that the donor is physically and mentally healthy, medicines are given to both the donor and the recipient to get their menstrual cycles in sync. Then the egg retrieval process will follow. What is the Cost of IVF with Donor Eggs ? Summary Before an egg donor procedure begins, it is important for the donor to be thoroughly tested and screened. Only when everything seems fine, should you proceed with the donation.",
+                "tokens": 308,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 37061,
+                "source_type": 3,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/treating-women-with-a-low-amh-level",
+                "text": "Treating women with a low AMH level Some patients will say, \"I don't want to waste my time and money in doing IVF with my own eggs if the success rate is low, so let me just go for donor eggs, as this maximizes my chances of having a baby. I just want to get pregnant, have a baby, and move on with my life, and don\u00e2\u0080\u0099t want to mess around with multiple IVF cycles with my own eggs, which I know have a low chance of success, because I have a low AMH. I want to minimize the time to baby, and maximize my chances of having a baby in the fastest possible manner.\"",
+                "tokens": 154,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 39621,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/the-donor-egg-decision",
+                "text": "The donor egg decision Over the last 30 years, we have treated lots of patients who have used donor eggs to have a baby. The vast majority of these patients are extremely happy with their decision, and many have come back for a second baby, in order to complete their family. This is especially true when they have chosen that decision for themselves, for purely selfish reasons. They decided, \"Yes, this is what we're happy to do, because I want to experience the joy of pregnancy and the happiness of bringing up a baby, and I'm not hung up about whose DNA it is.\" On the other hand, there are lots of infertile couples who accept the option of donor eggs very reluctantly. Their justification is, \"Well, what else can I do? I'm already 45, and my doctor has told me my only option is donor eggs. I would have preferred to use my own eggs, but since that's not possible, I will reluctantly accept donor eggs, but I don't feel happy about it.\"",
+                "tokens": 331,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 37437,
+                "source_type": 2,
+                "source_url": null,
+                "text": "Low amh patient fresh or frozen\nWhen deciding between fresh and frozen eggs for a patient with low AMH levels, factors to consider include success rates, cost, if you are using your own eggs or donor eggs and personal preferences. Fresh eggs have slightly higher success rates but are more expensive and require synchronization with the donor's cycle. Frozen eggs offer more flexibility in timing and lower costs but may have slightly lower success rates. Discuss these options with your doctor to make an informed decision based on your individual circumstances.",
+                "tokens": 130,
+                "created_at": "2024-10-10T00:00:00.000Z"
+            },
+            {
+                "id": 25956,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/the-story-of-an-embryo",
+                "text": "The story of an embryo ! We retrieved 4 oocyte cumlus complexes from 4 follicles for this older woman with a very low AMH level All the 4 eggs were mature ( M2) and we did ICSI for all of them However, only 1 fertilised This divided well until Day 4, by which point it had formed a morule However, the blastocyst on Day 5 was of poor quality This photo-essay emphasises how much biological variability there is in egg and embryo quality, which is why it is so hard for us to predict IVF success rates !",
+                "tokens": 128,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 35899,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/how-to-diagnose-and-treat-adenomyosis-before-ivf",
+                "text": "How to diagnose and treat adenomyosis before IVF? Adenomyosis is a common diagnosis in women who have had children and it is important to remember that it is often a benign condition which does not affect IVF success rates at all. For most patients, it does not need to be treated, as long as the intramural adenomyoma is small and does not affect the uterine cavity. The key question is - Is the adenomyosis causing infertility? It is important to rule out other causes of infertility first, before blaming the adenomyosis for the infertility. If you have been told that you have adenomyosis, please share your ultrasound scan with us so we can review it for you to give you a second opinion. We will be happy to answer your question - To treat or not to treat?",
+                "tokens": 169,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 26926,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/managing-low-ovarian-reserve-before-ivf",
+                "text": "Managing low ovarian reserve before IVF If you have a low AMH level (which means you have a poor ovarian reserve), should you consider using donor eggs right away, or should you first try a cycle of IVF with your own eggs? There is a lot of controversy about this, and patients are often confused about what the best option is for them. There is no simple answer, and it depends on your personal situation and what your priority is. If your priority is to get pregnant as quickly as possible and minimize the number of IVF cycles you will need, then donor eggs are definitely the best option for you. This is because donor eggs come from young, fertile women, and using them maximizes your chance of having a baby in a single cycle. However, if your priority is to have a genetically related child, then you should first try a cycle of IVF with your own eggs. This will give you a clear picture of what your egg quality is like and whether you have a chance of conceiving with your own eggs. If your IVF cycle with your own eggs is unsuccessful, you can then move on to using donor eggs. This way, you will have no regrets later on. The decision to use donor eggs is an emotionally difficult one, and it is important to be emotionally prepared for this step. No one can force you to use donor eggs, and the choice is entirely yours. You need to be comfortable with the idea of having a child who is not genetically related to you.",
+                "tokens": 339,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 36953,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/adenomyosis-and-ivf",
+                "text": "Adenomyosis and IVF Women with adenomyosis (a condition where the lining of the uterus grows into the muscular wall) can have normal fertility, as long as the condition is localized (such as an adenomyoma) and does not affect the lining of the uterine cavity. In these cases, the adenomyosis does not affect the implantation of the embryo, and no treatment is needed before IVF. However, if the adenomyosis is diffuse and affects the entire uterine wall, or if it is a large adenomyoma that distorts the uterine cavity, it can reduce the chances of implantation and pregnancy. In these severe cases, treatment may be needed before IVF. But for a small, localized adenomyoma, like yours, the prognosis is good and you can proceed with your IVF cycle.",
+                "tokens": 167,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            },
+            {
+                "id": 36684,
+                "source_url": "https:\/\/www.drmalpani.com\/knowledge-center\/articles\/is-donor-egg-ivf-the-right-option-for-you",
+                "text": "Is donor egg IVF the right option for you? The decision to use donor eggs is not an easy one. Many patients are emotionally attached to the idea of having a genetically related child and find it difficult to accept donor eggs. They often go through several failed IVF cycles with their own eggs before they are emotionally ready to consider donor eggs. However, for women with poor ovarian reserve, donor eggs offer the best chance of a successful pregnancy. It's important to weigh your priorities: is it the genetic connection, the experience of pregnancy, or the joy of raising a child? If your priority is to become a mother, donor eggs is a great option. It offers high success rates and minimizes the time and money spent on multiple, low-chance cycles with your own eggs. The baby will not carry your DNA, but you will carry and give birth to the child, and you will be the mother in every social and emotional sense. This is what truly matters.",
+                "tokens": 273,
+                "created_at": "2024-02-09T00:00:00.000Z"
+            }
+        ],
+        "sources": {
+            "vectors_used": [
+                36947,
+                38511,
+                25284,
+                37460,
+                25903,
+                38232,
+                39650,
+                33723,
+                37061,
+                39621,
+                37437,
+                25956,
+                35899,
+                26926,
+                36953,
+                36684
+            ]
+        },
+        "final_response": [
+            "I understand that managing fertility concerns can be challenging.",
+            "With an AMH of 0.68 and an AFC of 4, you're facing a lower ovarian reserve, which can impact IVF success rates when using your own eggs.",
+            "Additionally, the presence of an intramural adenomyoma can further complicate things.",
+            "Many women in similar situations consider using donor eggs to increase their chances of success, as younger donor eggs typically result in higher quality embryos.",
+            "I'd recommend discussing these options with one of our fertility specialists who can offer personalized advice.",
+            "You can [book a consultation](https:\/\/pages.razorpay.com\/ivfconsultation) to explore the best path forward based on your specific situation.",
+            "How do you feel about the idea of using donor eggs?"
+        ]
+    }
+  }
+}

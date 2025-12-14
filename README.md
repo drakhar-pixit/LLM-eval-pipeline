@@ -107,12 +107,12 @@ docker-compose up --build -d
 ## 📝 Important Notes
 
 ### **⚠️ Input JSON Modifications**
-**We have merged the two separate input JSON files into a single unified format and corrected syntax errors in the original JSON structure.** The original files contained:
+**I have merged the two separate input JSON files into a single unified format and corrected syntax errors in the original JSON structure.** The original files contained:
 - Invalid JSON syntax (missing commas, incorrect nesting)
 - Separate conversation and vector files requiring manual merging
 - Inconsistent timestamp formats
 
-Our unified format (`data/test_payload.json`, `data/test_payload_2.json`, `data/test_payload_3.json`) provides:
+my unified format (`data/test_payload.json`, `data/test_payload_2.json`, `data/test_payload_3.json`) provides:
 - Valid JSON structure
 - Single file containing both conversation turns and context vectors
 - Consistent schema for easy testing

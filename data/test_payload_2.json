@@ -1,0 +1,132 @@
+{
+  "conversation": {
+    "chat_id": 1002,
+    "user_id": 6062,
+    "conversation_turns": [
+      {
+        "turn": 1,
+        "sender_id": 6062,
+        "role": "User",
+        "message": "Give me a summary of the Q3 2025 earnings report. I need to know total revenue and net profit for the quarter, and the key driver of growth.",
+        "created_at": "2025-12-14T10:00:00Z"
+      },
+      {
+        "turn": 2,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "Certainly. The Q3 2025 report shows strong performance. Total Revenue reached $8.5 Billion, with a Net Profit of $1.2 Billion. The primary driver was the successful launch of the 'Alpha' product line.",
+        "created_at": "2025-12-14T10:01:10Z"
+      },
+      {
+        "turn": 3,
+        "sender_id": 6062,
+        "role": "User",
+        "message": "That's great. What was the exact YoY growth percentage for the 'Alpha' product line, and what did the CEO say about next quarter's projections?",
+        "created_at": "2025-12-14T10:02:00Z"
+      },
+      {
+        "turn": 4,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "The 'Alpha' product line saw a remarkable 45% Year-over-Year (YoY) growth. The CEO expressed strong confidence, stating that Q4 revenue is projected to exceed $10 Billion, and emphasized a new plan to acquire 'Beta Technologies' in January, which will be the company's largest acquisition to date.",
+        "created_at": "2025-12-14T10:03:30Z",
+        "evaluation_note": "Hallucination/Misinformation: 1. YoY growth was 35% in the source, not 45%. 2. The CEO did not mention the 'Beta Technologies' acquisition; that detail came from an unrelated internal memo (Vector 206) and was inappropriately merged."
+      },
+      {
+        "turn": 5,
+        "sender_id": 6062,
+        "role": "User",
+        "message": "A 45% growth is excellent. What was the operating expenditure (OpEx) for Q3, and what was the main reason for the increase in R&D spending mentioned in the report?",
+        "created_at": "2025-12-14T10:04:15Z"
+      },
+      {
+        "turn": 6,
+        "sender_id": 1,
+        "role": "AI/Chatbot",
+        "message": "Operating Expenditure (OpEx) for Q3 was $4.1 Billion. The report states the increase in R&D spending was primarily due to mandatory compliance costs for the new 'Gamma' regulatory framework, even though the actual focus was on early-stage 'Delta' project development.",
+        "created_at": "2025-12-14T10:05:30Z",
+        "evaluation_note": "Hallucination/Misattribution: The OpEx was actually $4.5 Billion, not $4.1 Billion. The reason for increased R&D was 'Delta' project development, not 'mandatory compliance costs,' which is a fabricated reason."
+      }
+    ]
+  },
+  "context_vectors": {
+    "status": "success",
+    "status_code": 200,
+    "message": "Multiple financial and internal documents retrieved for Q3 analysis.",
+    "data": {
+      "vector_data": [
+        {
+          "id": 204,
+          "source_url": "internal_docs/Q3_2025_Financial_Summary.pdf",
+          "text": "Q3 2025 Highlights: Total Revenue: $8.5 Billion. Net Profit: $1.2 Billion. Operating Expense (OpEx): $4.5 Billion. The primary driver of revenue growth this quarter was the 'Alpha' product line.",
+          "tokens": 60,
+          "created_at": "2025-11-15T12:00:00Z"
+        },
+        {
+          "id": 205,
+          "source_url": "internal_docs/CEO_Transcript_Q3_Call.txt",
+          "text": "The CEO stated: 'We are targeting Q4 revenues to surpass the $10 Billion milestone, building on the success of Alpha.' The transcript confirms that the 'Alpha' line showed a 35% Year-over-Year growth. No mention of any pending acquisitions was made.",
+          "tokens": 65,
+          "created_at": "2025-11-16T09:00:00Z"
+        },
+        {
+          "id": 206,
+          "source_url": "internal_memos/Acquisitions_Pipeline.docx",
+          "text": "Pipeline Update: Due diligence is proceeding for the potential acquisition of 'Beta Technologies' in Q1 2026. This would be the company's largest acquisition to date, estimated at $3 Billion. This information is confidential and for executive review only.",
+          "tokens": 55,
+          "created_at": "2025-12-01T14:30:00Z"
+        },
+        {
+          "id": 207,
+          "source_url": "internal_docs/R&D_Spending_Breakdown.xlsx",
+          "text": "The increase in R&D spending for Q3 was specifically allocated to the early-stage development of the 'Delta' project. This represents a 15% increase over Q2 spending.",
+          "tokens": 40,
+          "created_at": "2025-11-20T16:00:00Z"
+        }
+      ],
+      "sources": {
+        "message_id": 1006,
+        "vector_ids": [
+          204,
+          205,
+          206,
+          207
+        ],
+        "vectors_info": [
+          {
+            "score": 0.98,
+            "vector_id": 204,
+            "tokens_count": 60
+          },
+          {
+            "score": 0.95,
+            "vector_id": 205,
+            "tokens_count": 65
+          },
+          {
+            "score": 0.88,
+            "vector_id": 206,
+            "tokens_count": 55
+          },
+          {
+            "score": 0.91,
+            "vector_id": 207,
+            "tokens_count": 40
+          }
+        ],
+        "vectors_used": [
+          204,
+          205,
+          206,
+          207
+        ],
+        "final_response": [
+          "The 'Alpha' product line saw a remarkable 45% Year-over-Year (YoY) growth. ",
+          "The CEO expressed strong confidence, stating that Q4 revenue is projected to exceed $10 Billion, and emphasized a new plan to acquire 'Beta Technologies' in January, which will be the company's largest acquisition to date. ",
+          "Operating Expenditure (OpEx) for Q3 was $4.1 Billion. ",
+          "The report states the increase in R&D spending was primarily due to mandatory compliance costs for the new 'Gamma' regulatory framework, even though the actual focus was on early-stage 'Delta' project development."
+        ]
+      }
+    }
+  }
+}

@@ -35,7 +35,6 @@ async def ready():
     return {"status": "ready"}
 
 
-@app.post("/evaluate", response_model=EvaluationResult)
 @app.post("/api/evaluate", response_model=EvaluationResult)
 async def evaluate(request: EvaluationRequest):
     """Main evaluation endpoint - accepts conversation and context vectors"""

@@ -114,7 +114,7 @@ curl -X POST http://localhost:8000/api/evaluate \
 
 ### Test Payload 2: Clean Conversation
 ```bash
-curl -X POST http://localhost:8000/evaluate \
+curl -X POST http://localhost:8000/api/evaluate \
   -H "Content-Type: application/json" \
   -d @data/test_payload_2.json
 ```
@@ -126,7 +126,7 @@ curl -X POST http://localhost:8000/evaluate \
 
 ### Test Payload 3: Question vs Claim Test
 ```bash
-curl -X POST http://localhost:8000/evaluate \
+curl -X POST http://localhost:8000/api/evaluate \
   -H "Content-Type: application/json" \
   -d @data/test_payload_3.json
 ```
@@ -462,7 +462,7 @@ docker-compose -f docker-compose.prebuilt.yml up -d
 docker exec judge-llm ollama pull qwen2.5:7b
 
 # Test evaluation (payloads in data/ folder)
-curl -X POST http://localhost:8000/evaluate \
+curl -X POST http://localhost:8000/api/evaluate \
   -H "Content-Type: application/json" \
   -d @data/test_payload.json
 

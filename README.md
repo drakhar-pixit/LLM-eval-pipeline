@@ -6,6 +6,14 @@ A production-ready evaluation pipeline for assessing AI conversation quality usi
 
 ---
 
+## ⚠️ IMPORTANT: GPU Setup Highly Recommended
+
+**CPU evaluation takes ~5 minutes per conversation. GPU evaluation takes ~30 seconds.**
+
+For the best experience, use the GPU setup (Option 2 below). Follow the [Docker GPU setup guide](https://docs.docker.com/desktop/features/gpu/) to configure your environment.
+
+---
+
 ## 📋 Table of Contents
 - [Local Setup Instructions](#local-setup-instructions)
 - [Testing the Pipeline](#testing-the-pipeline)

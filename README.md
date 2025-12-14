@@ -108,6 +108,83 @@ docker-compose up --build -d
 
 **Note:** All test payloads are located in the `data/` folder.
 
+### Example I/O
+
+**Endpoint:** `POST /api/evaluate`
+
+**Request JSON:**
+```json
+{
+  "conversation": {
+    "chat_id": "chat_123",
+    "user_id": "user_456",
+    "conversation_turns": [
+      {
+        "turn": 1,
+        "role": "User",
+        "message": "What are the check-in requirements?",
+        "created_at": "2024-01-15T10:00:00Z"
+      },
+      {
+        "turn": 2,
+        "role": "AI/Chatbot",
+        "message": "Check-in requires a valid ID and credit card.",
+        "created_at": "2024-01-15T10:00:05Z"
+      }
+    ]
+  },
+  "context_vectors": {
+    "data": {
+      "sources": {
+        "vectors_used": ["vec_001"]
+      },
+      "vector_data": [
+        {
+          "id": "vec_001",
+          "text": "Check-in policy: Valid government-issued ID and credit card required."
+        }
+      ]
+    }
+  }
+}
+```
+
+**Response JSON:**
+```json
+{
+  "conversation_id": "chat_123",
+  "user_id": "user_456",
+  "total_turns": 2,
+  "ai_responses_evaluated": 1,
+  "overall_score": 95.5,
+  "summary": {
+    "total_evaluations": 1,
+    "hallucinations_detected": 0,
+    "avg_relevance": 10.0,
+    "avg_completeness": 9.5,
+    "total_cost": 0.000123,
+    "avg_latency_ms": 1250
+  },
+  "evaluations": [
+    {
+      "turn": 2,
+      "user_query": "What are the check-in requirements?",
+      "ai_response": "Check-in requires a valid ID and credit card.",
+      "llm_judgment": {
+        "hallucination": false,
+        "relevance_score": 10.0,
+        "completeness_score": 9.5,
+        "reasoning": "Response accurately reflects context information."
+      },
+      "metrics": {
+        "latency_ms": 1250,
+        "cost_usd": 0.000123
+      }
+    }
+  ]
+}
+```
+
 ### Test Payload 1: Hallucination Detection (Subsidized Rooms)
 ```bash
 curl -X POST http://localhost:8000/api/evaluate \
@@ -385,6 +462,15 @@ Our unified format (`data/test_payload.json`, `data/test_payload_2.json`, `data/
 - First run downloads 4-5GB model (one-time)
 - CPU inference is slow (~10s per turn); GPU recommended for production
 - Evaluation is sequential per conversation (parallelizable across conversations)
+
+### Future Work
+This pipeline handles core evaluation metrics including hallucination detection, relevance, and completeness scoring. Future improvements include:
+- Domain-aware scoring with customizable evaluation criteria per industry
+- Human-in-the-loop calibration for fine-tuning judgment thresholds
+- Multi-language support for non-English conversations
+- Real-time streaming evaluation for live chat systems
+- Advanced caching strategies with Redis for vector embeddings
+- Integration with observability platforms (Prometheus, Grafana) for production monitoring
 
 ---
 
